@@ -1,5 +1,6 @@
 require("dotenv").config();
 const express = require("express");
+const cors = require("cors");
 const { Sequelize, DataTypes } = require("sequelize");
 const dbConfig = require("./config/config.json").development;
 
