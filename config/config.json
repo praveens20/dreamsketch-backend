@@ -1,0 +1,24 @@
+{
+  "development": {
+    "username": "neondb_owner",
+    "password": "npg_nTrtlEKxjR72",
+    "database": "neondb",
+    "host": "ep-orange-heart-a5ac8b07-pooler.us-east-2.aws.neon.tech",
+    "dialect": "postgres",
+    "schema": "admin"
+  },
+  "test": {
+    "username": "root",
+    "password": null,
+    "database": "database_test",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  },
+  "production": {
+    "username": "root",
+    "password": null,
+    "database": "database_production",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  }
+}
