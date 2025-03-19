@@ -1,10 +1,10 @@
-// models/employee.js
-module.exports = (sequelize, DataTypes) => {
-    const Employee = sequelize.define("employee", {
-        id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
-        emp_name: { type: DataTypes.STRING, allowNull: false },
-        emp_id: { type: DataTypes.STRING, allowNull: false },
-    }, { schema: 'admin', timestamps: false });
+const { DataTypes } = require("sequelize");
+const sequelize = require("../db");
 
-    return Employee;
-};
+const Employee = sequelize.define("employee", {
+    id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
+    emp_name: { type: DataTypes.STRING, allowNull: false },
+    emp_id: { type: DataTypes.STRING, allowNull: false },
+}, { schema: 'admin', timestamps: false });
+
+module.exports = Employee;
