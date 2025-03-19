@@ -31,6 +31,7 @@ sequelize.sync()
 // Get all employees
 app.get("/employees", async (req, res) => {
     try {
+        console.log("----------get employees------------");
         const employees = await EmployeeModel.findAll();
         res.json(employees);
     } catch (err) {
