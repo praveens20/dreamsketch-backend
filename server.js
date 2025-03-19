@@ -22,6 +22,7 @@ const EmployeeModel = require("./models/employee")(sequelize, DataTypes);
 
 // Middleware
 app.use(express.json());
+app.use(cors());  // Enable CORS
 
 // Sync Database (Creates table if it doesn't exist)
 sequelize.sync()
