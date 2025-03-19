@@ -4,7 +4,6 @@ const cors = require("cors");
 
 const routes = require("./routes");
 const sequelize = require("./db"); // Import Sequelize instance
-const employeeRoutes = require("./routes/employeeRoutes");
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -13,8 +12,7 @@ const port = process.env.PORT || 3000;
 app.use(express.json());
 app.use(cors());  // Enable CORS
 
-// Use Employee Routes
-app.use("/employees", employeeRoutes);
+app.use("/", routes);
 
 // Sync Database (Creates table if it doesn't exist)
 sequelize.sync()
