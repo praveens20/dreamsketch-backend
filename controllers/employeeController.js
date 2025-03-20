@@ -1,13 +1,14 @@
 // Import Model
 const Employee = require("../models/employee");
+const { buildSuccessResponse, buildFailureResponse } = require("../utils/response");
 
 // Get all employees
 exports.getEmployees = async (req, res) => {
     try {
         const employees = await Employee.findAll();
-        res.json(employees);
+        res.json(buildSuccessResponse("Employees fetched successfully.", employees));
     } catch (err) {
-        res.status(500).json({ error: err.message });
+        res.status(500).json(buildFailureResponse(err.message));
     }
 };
 
@@ -16,8 +17,8 @@ exports.addEmployee = async (req, res) => {
     const { name, empId } = req.body;
     try {
         const employee = await Employee.create({ emp_name: name, emp_id: empId });
-        res.status(201).json(employee);
+        res.status(201).json(buildSuccessResponse("Employee added successfully.", employee));
     } catch (err) {
-        res.status(500).json({ error: err.message });
+        res.status(500).json(buildFailureResponse(err.message));
     }
 };
