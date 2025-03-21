@@ -8,7 +8,7 @@ exports.getEmployees = async (req, res) => {
         const employees = await Employee.findAll();
         res.json(buildSuccessResponse("Employees fetched successfully.", employees));
     } catch (err) {
-        res.status(500).json(buildFailureResponse(err.message));
+        res.status(500).json(buildFailureResponse(err));
     }
 };
 
@@ -19,6 +19,6 @@ exports.addEmployee = async (req, res) => {
         const employee = await Employee.create({ emp_name: name, emp_id: empId });
         res.status(201).json(buildSuccessResponse("Employee added successfully.", employee));
     } catch (err) {
-        res.status(500).json(buildFailureResponse(err.message));
+        res.status(500).json(buildFailureResponse(err));
     }
 };

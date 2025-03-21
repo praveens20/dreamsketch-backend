@@ -15,7 +15,8 @@ exports.buildSuccessResponse = (message, data = null) => {
     };
 };
 
-exports.buildFailureResponse = (message, data = null, error = null) => {
+exports.buildFailureResponse = (err, data = null, error = null) => {
+    const message = err?.parent?.detail ?? err.message;
     return {
         status: "failure",
         message,
