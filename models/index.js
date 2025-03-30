@@ -13,7 +13,15 @@ let sequelize;
 if (config.use_env_variable) {
   sequelize = new Sequelize(process.env[config.use_env_variable], config);
 } else {
-  sequelize = new Sequelize(config.database, config.username, config.password, config);
+  sequelize = new Sequelize({
+      ...config,
+      define: { schema: config.schema },
+      logging: false,
+      dialectOptions: {
+          // ssl: process.env.PGSSLMODE === "require" ? { rejectUnauthorized: false } : false
+          ssl: { rejectUnauthorized: false }
+      }
+  });
 }
 
 fs

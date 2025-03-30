@@ -3,10 +3,11 @@ const express = require("express");
 const cors = require("cors");
 
 const routes = require("./routes");
-const sequelize = require("./db"); // Import Sequelize instance
 
 const app = express();
 const port = process.env.PORT || 3000;
+const { sequelize } = require('./models');
+
 
 // Middleware
 app.use(express.json());
