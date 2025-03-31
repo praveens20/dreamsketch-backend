@@ -1,11 +1,15 @@
-const { Employee, Designation } = require("../models");
+const { Employee, Designation, Department } = require("../models");
 
 exports.getAllEmployees = async () => {
     return await Employee.findAll({
         include: [{
             model: Designation,
             as: 'designation',
-            attributes: ['title'], // Get only the designation title
+            attributes: ['des_name'],
+        }, {
+            model: Department,
+            as: 'department',
+            attributes: ['dep_name']
         }],
     });
 };

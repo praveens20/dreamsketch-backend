@@ -29,6 +29,16 @@ module.exports = (sequelize, DataTypes) => {
             onUpdate: 'CASCADE',
             onDelete: 'RESTRICT',
         },
+        department_id: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            references: {
+                model: 'departments', // Table name
+                key: 'id', // Column in Department table
+            },
+            onUpdate: 'CASCADE',
+            onDelete: 'RESTRICT',
+        },
     }, {
         schema: 'admin',
         tableName: 'employees',
@@ -39,6 +49,11 @@ module.exports = (sequelize, DataTypes) => {
         Employee.belongsTo(models.Designation, {
             foreignKey: "designation_id",
             as: 'designation'
+        });
+
+        Employee.belongsTo(models.Department, {
+            foreignKey: "department_id",
+            as: 'department'
         });
     };
 

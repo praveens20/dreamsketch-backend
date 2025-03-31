@@ -1,24 +1,24 @@
 module.exports = (sequelize, DataTypes) => {
-    const Designation = sequelize.define("Designation", {
+    const Department = sequelize.define("Department", {
         id: {
             type: DataTypes.INTEGER,
             primaryKey: true,
             autoIncrement: true
         },
-        des_name: {
+        dep_name: {
             type: DataTypes.STRING,
             allowNull: false,
             unique: true
         },
     }, {
         schema: 'admin',
-        tableName: 'designations',
+        tableName: 'departments',
         timestamps: false
     });
 
-    Designation.associate = (models) => {
-        Designation.hasMany(models.Employee, { foreignKey: 'designation_id' });
+    Department.associate = (models) => {
+        Department.hasMany(models.Employee, { foreignKey: 'department_id' });
     };
 
-    return Designation;
+    return Department;
 };
